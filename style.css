@@ -1,0 +1,98 @@
+/* Basic page layout */
+:root{
+  --max-width:900px;
+  --gap:16px;
+}
+body{
+  font-family: Inter, Arial, sans-serif;
+  margin: 0 auto;
+  max-width: var(--max-width);
+  padding: 18px;
+  color: #111;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* header + nav */
+header { margin-bottom: 10px; }
+#topControls { margin-bottom: 14px; }
+#topControls button { margin-right:8px; padding:8px 10px; cursor:pointer; }
+
+/* display boxes above shelves */
+#displayArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two boxes side-by-side */
+  gap: var(--gap);
+  margin-bottom: 18px;
+}
+.displayBox {
+  border-radius: 10px;
+  border: 3px solid #111;
+  min-height: 120px;
+  background: #fafafa;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  padding:10px;
+  text-align:center;
+}
+
+/* main - shelves grid */
+#mainContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* default 2 shelves/row */
+  gap: var(--gap);
+  margin-bottom: 18px;
+}
+
+/* shelf tile */
+.shelfSquare {
+  background:#eee;
+  border-radius:8px;
+  border:2px solid #111;
+  min-height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+  transition: transform .12s ease;
+}
+.shelfSquare:hover{ transform: scale(1.03); }
+
+/* list of vinyls inside a shelf detail view */
+.vinylList { margin-top: 10px; display:block; }
+.vinylItem {
+  border-radius:6px;
+  padding:10px;
+  margin-bottom:10px;
+  border:1px solid #bbb;
+  background:#fff;
+}
+.vinylItem button { margin-right:6px; margin-top:8px; }
+
+/* form area */
+#formArea {
+  margin-top: 18px;
+  padding-top: 8px;
+  border-top:1px solid #ddd;
+}
+#formArea label { display:block; margin:8px 0; font-size:0.95rem; }
+#formArea input, #formArea select { width:100%; padding:8px; box-sizing:border-box; }
+
+/* category colours (applies on detail list items) */
+.category-bought { background:#FFD70088; }
+.category-gran   { background:#FFB6C188; }
+.category-nan    { background:#87CEFA88; }
+.category-grandad{ background:#90EE9088; }
+.category-other  { background:#E0E0E088; }
+
+/* small util */
+.center { text-align:center; }
+
+/* responsive */
+@media (max-width:640px){
+  #displayArea { grid-template-columns: 1fr; }
+  #mainContainer { grid-template-columns: 1fr; }
+}

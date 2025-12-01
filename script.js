@@ -1,23 +1,20 @@
-// ---------------- SPLASH SCREEN LOGIC ---------------- //
-
+// Splash Screen Logic
 const splash = document.getElementById("splash");
 const app = document.getElementById("app");
 
+// Hide splash and show app on click
 splash.addEventListener("click", () => {
   splash.style.display = "none";
   app.classList.remove("hidden");
 });
 
-// ---------------- DATA STORAGE ---------------- //
-
+// Data Storage and Vinyl Management
 let shelves = 6;
 const shelfGrid = document.getElementById("shelfGrid");
 const shelfSelect = document.getElementById("shelfSelect");
-
 let vinyls = JSON.parse(localStorage.getItem("vinyls") || "[]");
 
-// ---------------- BUILD SHELVES ---------------- //
-
+// Build Shelves
 function buildShelves() {
   shelfGrid.innerHTML = "";
   shelfSelect.innerHTML = "";
@@ -45,13 +42,11 @@ function buildShelves() {
 
     box.addEventListener("click", () => openShelf(i));
     shelfGrid.appendChild(box);
-
     shelfSelect.innerHTML += `<option>Shelf ${i}</option>`;
   }
 }
 
-// ---------------- ADD VINYL ---------------- //
-
+// Add Vinyl
 document.getElementById("addBtn").addEventListener("click", () => {
   const artist = document.getElementById("artistInput").value.trim();
   const album = document.getElementById("albumInput").value.trim();
@@ -72,33 +67,7 @@ document.getElementById("addBtn").addEventListener("click", () => {
   buildShelves();
 });
 
-// ---------------- DISPLAY BOXES ---------------- //
-
+// Reset Displays
 document.getElementById("resetDisplaysBtn").addEventListener("click", () => {
-  document.getElementById("display1").innerHTML = "";
-  document.getElementById("display2").innerHTML = "";
-});
+  document.getElementById("display1"
 
-// ---------------- SHELF VIEW ---------------- //
-
-function openShelf(n) {
-  vinyls = vinyls.map(v =>
-    v.shelf === n ? { ...v, new: false } : v
-  );
-
-  localStorage.setItem("vinyls", JSON.stringify(vinyls));
-  buildShelves();
-
-  alert("Shelf " + n + " opened. (Full shelf view coming soon.)");
-}
-
-// ---------------- OTHER BUTTONS ---------------- //
-
-document.getElementById("shelvesViewBtn").addEventListener("click", buildShelves);
-document.getElementById("fullCollectionBtn").addEventListener("click", () => {
-  alert("Full collection view coming soon!");
-});
-
-// ---------------- INIT ---------------- //
-
-buildShelves();

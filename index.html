@@ -1,73 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vinyl Vault</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-title" content="Vinyl Vault">
 </head>
-
 <body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⟲</div>
+      <h1>VINYL VAULT</h1>
+    </div>
 
-  <!-- SPLASH SCREEN -->
-  <div id="splash">
-    <img id="splashLogo" src="icon-512.png" alt="Vinyl Vault Logo">
-    <h1>VINYL VAULT</h1>
-  </div>
-
-  <!-- MAIN APP -->
-  <div id="app" class="hidden">
-
-    <section class="top-controls">
-      <button id="addVinylBtn">Add Vinyl</button>
+    <div class="top-actions">
+      <button id="addViewBtn">Add Vinyl</button>
       <button id="collectionBtn">Collection</button>
       <button id="settingsBtn">Other settings</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Left: shelves area (desktop) or main stacked area (mobile) -->
+    <section class="shelves-area">
+      <!-- Display boxes (will be above shelves on mobile, right-of-shelves on wide screens via CSS) -->
+      <div id="displayArea" class="displayArea">
+        <div class="displayBox" id="displayBox0">Display Box 1</div>
+        <div class="displayBox" id="displayBox1">Display Box 2</div>
+      </div>
+
+      <!-- Shelves grid -->
+      <div id="mainContainer" class="shelvesGrid"></div>
     </section>
 
-    <section class="display-area">
-      <div id="display1" class="display-box"></div>
-      <div id="display2" class="display-box"></div>
-    </section>
+    <!-- Right column for form / controls on desktop, below on mobile -->
+    <aside class="controls">
+      <div class="control-group">
+        <h3>Add a Vinyl</h3>
+        <label>Artist
+          <input id="artist" type="text" placeholder="Artist">
+        </label>
+        <label>Album
+          <input id="album" type="text" placeholder="Album">
+        </label>
+        <label>Shelf
+          <select id="shelfSelect"></select>
+        </label>
+        <label>Category
+          <select id="categorySelect">
+            <option value="bought">Bought</option>
+            <option value="gran">Gran</option>
+            <option value="nan">Nan</option>
+            <option value="grandad">Grandad</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <div class="control-row">
+          <button id="addBtn">Add</button>
+          <button id="resetDisplaysBtn">Reset displays</button>
+        </div>
+      </div>
 
-    <main class="layout">
-      <section id="shelfGrid" class="shelves-grid"></section>
-
-      <aside class="side-panel">
-        <h2>Add a Vinyl</h2>
-
-        <label>Artist</label>
-        <input id="artistInput" />
-
-        <label>Album</label>
-        <input id="albumInput" />
-
-        <label>Shelf</label>
-        <select id="shelfSelect"></select>
-
-        <label>Category</label>
-        <select id="categorySelect">
-          <option>Bought</option>
-          <option>Gran</option>
-          <option>Nan</option>
-          <option>Grandad</option>
-        </select>
-
-        <button id="addBtn">Add</button>
-        <button id="resetDisplaysBtn">Reset displays</button>
-
-        <h2>View</h2>
-        <button id="shelvesViewBtn">Shelves view</button>
+      <div class="control-group">
+        <h3>View</h3>
+        <button id="shelvesBtn">Shelves view</button>
         <button id="fullCollectionBtn">Full collection</button>
+      </div>
 
-        <h2>Other settings</h2>
-        <p>Accounts, themes, and more will go here.</p>
-      </aside>
-    </main>
-  </div>
+      <div class="control-group">
+        <h3>Layout</h3>
+        <label>Columns (desktop fallback)
+          <select id="columnsSelect">
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+        <p class="muted">Layout auto-adapts by screen size; change columns for wide screens.</p>
+      </div>
+
+      <div class="control-group">
+        <h3>Other settings</h3>
+        <p class="muted">Accounts, themes, and more will go here.</p>
+      </div>
+    </aside>
+  </main>
 
   <script src="script.js"></script>
 </body>
 </html>
-

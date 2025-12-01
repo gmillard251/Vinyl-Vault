@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vinyl Vault</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 
 <body>
 
-  <header class="top-header">
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <img id="splashLogo" src="icon-512.png" alt="Vinyl Vault Logo">
     <h1>VINYL VAULT</h1>
-  </header>
+  </div>
 
-  <section class="top-controls">
-    <button id="addVinylBtn">Add Vinyl</button>
-    <button id="collectionBtn">Collection</button>
-    <button id="settingsBtn">Other settings</button>
-  </section>
+  <!-- MAIN APP -->
+  <div id="app" class="hidden">
 
-  <section class="display-area">
-    <div id="display1" class="display-box"></div>
-    <div id="display2" class="display-box"></div>
-  </section>
+    <section class="top-controls">
+      <button id="addVinylBtn">Add Vinyl</button>
+      <button id="collectionBtn">Collection</button>
+      <button id="settingsBtn">Other settings</button>
+    </section>
 
-  <main class="layout">
+    <section class="display-area">
+      <div id="display1" class="display-box"></div>
+      <div id="display2" class="display-box"></div>
+    </section>
 
-    <section id="shelfGrid" class="shelves-grid"></section>
+    <main class="layout">
+      <section id="shelfGrid" class="shelves-grid"></section>
 
-    <aside class="side-panel">
-      <h2>Add a Vinyl</h2>
+      <aside class="side-panel">
+        <h2>Add a Vinyl</h2>
 
-      <label>Artist</label>
-      <input id="artistInput">
+        <label>Artist</label>
+        <input id="artistInput" />
 
-      <label>Album</label>
-      <input id="albumInput">
+        <label>Album</label>
+        <input id="albumInput" />
 
-      <label>Shelf</label>
-      <select id="shelfSelect"></select>
+        <label>Shelf</label>
+        <select id="shelfSelect"></select>
 
-      <label>Category</label>
-      <select id="categorySelect">
-        <option>Bought</option>
-        <option>Gran</option>
-        <option>Nan</option>
-        <option>Grandad</option>
-      </select>
+        <label>Category</label>
+        <select id="categorySelect">
+          <option>Bought</option>
+          <option>Gran</option>
+          <option>Nan</option>
+          <option>Grandad</option>
+        </select>
 
-      <button id="addBtn">Add</button>
-      <button id="resetDisplaysBtn">Reset displays</button>
+        <button id="addBtn">Add</button>
+        <button id="resetDisplaysBtn">Reset displays</button>
 
-      <h2>View</h2>
-      <button id="shelvesViewBtn">Shelves view</button>
-      <button id="fullCollectionBtn">Full collection</button>
+        <h2>View</h2>
+        <button id="shelvesViewBtn">Shelves view</button>
+        <button id="fullCollectionBtn">Full collection</button>
 
-      <h2>Other settings</h2>
-      <p>Accounts, themes, and more will go here.</p>
-    </aside>
-
-  </main>
+        <h2>Other settings</h2>
+        <p>Accounts, themes, and more will go here.</p>
+      </aside>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

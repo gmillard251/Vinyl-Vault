@@ -1,11 +1,22 @@
-// ---------------- Data Storage ---------------- //
+// ---------------- SPLASH SCREEN LOGIC ---------------- //
 
-let shelves = 6; // Default shelves
+const splash = document.getElementById("splash");
+const app = document.getElementById("app");
+
+splash.addEventListener("click", () => {
+  splash.style.display = "none";
+  app.classList.remove("hidden");
+});
+
+// ---------------- DATA STORAGE ---------------- //
+
+let shelves = 6;
 const shelfGrid = document.getElementById("shelfGrid");
 const shelfSelect = document.getElementById("shelfSelect");
+
 let vinyls = JSON.parse(localStorage.getItem("vinyls") || "[]");
 
-// ---------------- Build Shelves ---------------- //
+// ---------------- BUILD SHELVES ---------------- //
 
 function buildShelves() {
   shelfGrid.innerHTML = "";
@@ -33,13 +44,13 @@ function buildShelves() {
     }
 
     box.addEventListener("click", () => openShelf(i));
-
     shelfGrid.appendChild(box);
+
     shelfSelect.innerHTML += `<option>Shelf ${i}</option>`;
   }
 }
 
-// ---------------- Add Vinyl ---------------- //
+// ---------------- ADD VINYL ---------------- //
 
 document.getElementById("addBtn").addEventListener("click", () => {
   const artist = document.getElementById("artistInput").value.trim();
@@ -54,39 +65,40 @@ document.getElementById("addBtn").addEventListener("click", () => {
     album,
     shelf: shelfNumber,
     category,
-    new: true
+    new: true,
   });
 
   localStorage.setItem("vinyls", JSON.stringify(vinyls));
   buildShelves();
 });
 
-// ---------------- Display Boxes ---------------- //
+// ---------------- DISPLAY BOXES ---------------- //
 
 document.getElementById("resetDisplaysBtn").addEventListener("click", () => {
   document.getElementById("display1").innerHTML = "";
   document.getElementById("display2").innerHTML = "";
 });
 
-// ---------------- View Functions ---------------- //
+// ---------------- SHELF VIEW ---------------- //
 
 function openShelf(n) {
   vinyls = vinyls.map(v =>
-    v.shelf === n ? {...v, new: false} : v
+    v.shelf === n ? { ...v, new: false } : v
   );
 
   localStorage.setItem("vinyls", JSON.stringify(vinyls));
   buildShelves();
 
-  alert("Shelf " + n + " opened. (Shelf detail view coming next update.)");
+  alert("Shelf " + n + " opened. (Full shelf view coming soon.)");
 }
 
-document.getElementById("shelvesViewBtn").addEventListener("click", buildShelves);
+// ---------------- OTHER BUTTONS ---------------- //
 
+document.getElementById("shelvesViewBtn").addEventListener("click", buildShelves);
 document.getElementById("fullCollectionBtn").addEventListener("click", () => {
-  alert("Full collection view is coming next update!");
+  alert("Full collection view coming soon!");
 });
 
-// ---------------- Initial Load ---------------- //
+// ---------------- INIT ---------------- //
 
 buildShelves();

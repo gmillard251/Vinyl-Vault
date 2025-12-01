@@ -1,160 +1,159 @@
-:root {
-  --bg: #CDEBDF;            /* main background */
-  --accent: #2b7f6a;
-  --muted: #4c7f72;
-  --card: #e9f6f1;
-  --gap: 16px;
-  --max-width: 1100px;
-}
-* { box-sizing: border-box; }
-body{
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+body {
   margin: 0;
-  background: var(--bg);
-  color: #07332f;
-  padding: 18px;
-  display:flex;
-  justify-content:center;
-}
-.topbar{
-  width:100%;
-  max-width:var(--max-width);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:12px;
-}
-.brand { display:flex; align-items:center; gap:12px; }
-.brand .logo{
-  width:48px; height:48px; border-radius:8px;
-  border:2px solid rgba(7,51,47,0.15);
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(255,255,255,0.25); font-size:20px;
-}
-.brand h1 { margin:0; font-size:28px; letter-spacing:1px; color:var(--accent); }
-
-.top-actions button { margin-left:8px; padding:8px 12px; border-radius:8px; border:2px solid rgba(7,51,47,0.12); background:transparent; color:var(--muted); cursor:pointer; }
-.top-actions button:hover { transform:translateY(-1px); }
-
-/* layout: main content and controls */
-.layout{
-  width:100%;
-  max-width:var(--max-width);
-  display:grid;
-  grid-template-columns: 1fr 320px; /* left: shelves, right: controls */
-  gap:var(--gap);
+  background: #c8eadf;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1f6b57;
 }
 
-/* Shelves area: display boxes + shelves grid */
-.shelves-area { display:flex; flex-direction:column; gap:12px; }
+/* ---------------- Header ---------------- */
 
-/* display boxes: on desktop they sit above shelves but visually aligned to left area.
-   On wide screens we'll move them right with CSS grid for visual parity with mock. */
-.displayArea {
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:12px;
+.top-header {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
 }
 
-/* display box style */
-.displayBox{
-  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
-  border:3px solid rgba(0,0,0,0.15);
-  border-radius:10px;
-  min-height:120px;
-  display:flex; align-items:center; justify-content:center;
-  font-weight:700;
-  color: #0b5b4c;
+.top-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: bold;
 }
 
-/* Shelves grid: use auto-fill for responsive grid (Option B) */
-.shelvesGrid {
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: var(--gap);
+/* ---------------- Controls row ---------------- */
+
+.top-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* shelf tile */
-.shelfSquare{
-  background: rgba(255,255,255,0.12);
-  border-radius:10px;
-  border:3px solid rgba(0,0,0,0.12);
-  min-height:200px;
-  display:flex;
-  padding:12px;
-  align-items:flex-end;
-  justify-content:flex-start;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-}
-.shelfSquare:hover{ transform: translateY(-4px); transition: transform .12s; }
-
-/* shelf label bottom-left */
-.shelfLabel{
-  position:absolute; left:12px; bottom:10px; font-weight:700; color:var(--muted);
-  background: rgba(255,255,255,0.25); padding:4px 8px; border-radius:6px;
-  border:1px solid rgba(0,0,0,0.06);
+.top-controls button {
+  border: 1px solid #4f8f7e;
+  background: #d7f4eb;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-/* spines: vertical bars to mimic records */
-.spines{
-  position:absolute; left:22px; top:26px; bottom:26px; width:60%;
-  display:flex; align-items:flex-end; gap:6px;
-}
-.spine{
-  width:6px; background: rgba(7,51,47,0.55); border-radius:2px;
-  align-self:flex-end;
-  transform-origin: bottom center;
-}
-/* different heights for variety */
-.spine.h1{ height:60%; transform: rotate(-6deg); }
-.spine.h2{ height:75%; transform: rotate(-3deg); }
-.spine.h3{ height:68%; transform: rotate(0deg); }
+/* ---------------- Display Boxes ---------------- */
 
-/* small "NEW" badge on vinyl items (when shown in shelf detail) */
-.newBadge {
-  display:inline-block;
-  background:#fffae6;
-  color:#7a5a00;
-  padding:3px 6px;
-  font-weight:700;
-  border-radius:6px;
-  border:1px solid rgba(0,0,0,0.06);
-  margin-left:8px;
+.display-area {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
-/* vinyl detail list (shows when shelf clicked) */
-.vinylList { margin-top:12px; }
-.vinylItem{
-  background: rgba(255,255,255,0.9);
-  padding:10px; margin-bottom:10px; border-radius:8px;
-  border:1px solid rgba(0,0,0,0.06);
+.display-box {
+  width: 160px;
+  height: 120px;
+  background: #eaf3fb;
+  border: 2px solid #1f6b57;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  font-weight: bold;
 }
-.vinylItem .meta { color:#234f46; font-weight:600; margin-bottom:6px; }
 
-/* Controls column */
-.controls{ padding:12px; background: rgba(255,255,255,0.06); border-radius:8px; border:2px solid rgba(0,0,0,0.04); }
-.control-group { margin-bottom:14px; }
-.control-row { display:flex; gap:8px; margin-top:8px; }
+/* ---------------- Main Layout ---------------- */
 
-/* buttons */
-button { background:transparent; border:2px solid rgba(0,0,0,0.08); padding:8px 10px; border-radius:8px; cursor:pointer; color:var(--muted); }
-button:hover{ opacity:0.95; transform:translateY(-1px); }
-
-/* small text */
-.muted { font-size:0.9rem; color:rgba(0,0,0,0.45); }
-
-/* responsive: stack controls under shelves on small screens, display boxes above shelves */
-@media (max-width:900px){
-  .layout { grid-template-columns: 1fr; }
-  .displayArea { grid-template-columns: repeat(2, 1fr); }
-  .displayBox { min-height:110px; }
-  .shelvesGrid { grid-template-columns: repeat(2, 1fr); }
+.layout {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
 }
-@media (max-width:480px){
-  .displayArea { grid-template-columns: 1fr; }
-  .shelvesGrid { grid-template-columns: 1fr; }
-  .shelfSquare { min-height:140px; }
+
+/* ---------------- Shelves grid ---------------- */
+
+.shelves-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 160px);
+  grid-auto-rows: 200px;
+  gap: 1.5rem;
+}
+
+.shelf-box {
+  width: 160px;
+  height: 200px;
+  background: #b7e3d7;
+  border: 2px solid #1f6b57;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+/* NEW badge */
+.new-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ffdd57;
+  color: #1f1f1f;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Shelf spines */
+.spines {
+  display: flex;
+  gap: 6px;
+}
+
+.spine {
+  width: 10px;
+  height: 80px;
+  background: #1f6b57;
+  border-radius: 4px;
+}
+
+/* ---------------- Side Panel ---------------- */
+
+.side-panel {
+  width: 260px;
+  background: #d7f4eb;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.side-panel input,
+.side-panel select,
+.side-panel button {
+  width: 100%;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  border: 1px solid #4f8f7e;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+/* ---------------- Mobile layout ---------------- */
+
+@media (max-width: 800px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-panel {
+    width: 90%;
+  }
+
+  .shelves-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-controls {
+    flex-direction: column;
+    align-items: center;
+  }
 }
